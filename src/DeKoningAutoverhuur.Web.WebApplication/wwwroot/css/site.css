@@ -48,3 +48,19 @@ textarea {
     display: none
   }
 }
+
+.car-holder{
+    height: 300px;
+    border-color: #D3D3D3;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.car-image{
+    padding: 5px;
+}
+
+.car-info{
+    padding: 5px;
+}
