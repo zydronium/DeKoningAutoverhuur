@@ -13,7 +13,6 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Common.Objects
         public string Gender;
         public AddressObject Address;
         public PhoneObject Phone;
-        public PhoneObject Fax;
         public string Email;
         public DateTime Created;
         public DateTime Modified;
