@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
-using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels;
 using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
+using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -63,7 +63,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Details(ReserveViewModel model)
+        public async Task<IActionResult> Details(DetailsViewModel model)
         {
             List<CarObject> cars = new List<CarObject>();
             CarObject car = new CarObject();
