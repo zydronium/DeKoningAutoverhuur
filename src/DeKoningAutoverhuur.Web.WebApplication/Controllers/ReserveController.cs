@@ -224,7 +224,20 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
 
             ViewData["payments"] = payments;
             HttpContext.Session.SetString("payment_provider", model.provider);
-            HttpContext.Response.Redirect("/reserve/payment");
+
+            if(model.provider == "contant")
+            {
+                HttpContext.Response.Redirect("/reserve/success");
+            }
+            else if (model.provider == "paypal")
+            {
+                HttpContext.Response.Redirect("/reserve/paypal");
+            }
+            else if (model.provider == "creditcard")
+            {
+                HttpContext.Response.Redirect("/reserve/creditcard");
+            }
+
             return View("~/Views/Shared/_Redirect.cshtml");
         }
 
