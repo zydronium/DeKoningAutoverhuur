@@ -7,5 +7,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels
 {
     public class IndexViewModel
     {
+        public string fromdatetime { get; set; }
+        public string todatetime { get; set; }
     }
 }

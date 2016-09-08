@@ -7,6 +7,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
 using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,33 +18,141 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<CarObject> cars = new List<CarObject>();
-            CarObject car = new CarObject();
-            car.LicensePlate = "12-34-AB";
-            car.Brand = "Mercedes";
-            car.Model = "A";
-            car.Transmission = "Manual";
-            car.Segment = "A";
-            cars.Add(car);
-
-            ViewData["cars"] = cars;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(IndexViewModel model)
+        {
+            HttpContext.Session.SetString("fromdatetime", model.fromdatetime);
+            HttpContext.Session.SetString("todatetime", model.todatetime);
+            HttpContext.Response.Redirect("/reserve/cars");
+            return View("~/Views/Shared/_Redirect.cshtml");
         }
 
         // GET: /<controller>/
         public IActionResult Cars()
         {
-            List<CarObject> cars = new List<CarObject>();
-            CarObject car = new CarObject();
-            car.LicensePlate = "12-34-AB";
-            car.Brand = "Mercedes";
-            car.Model = "A";
-            car.Transmission = "Manual";
-            car.Segment = "A";
-            cars.Add(car);
+            List<CarModelObject> carmodels = new List<CarModelObject>();
+            CarModelObject carmodel = new CarModelObject();
+            carmodel.Id = "1";
+            carmodel.Brand = "Audi";
+            carmodel.Model = "A6";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "audi-a6.jpg";
+            carmodels.Add(carmodel);
 
-            ViewData["cars"] = cars;
+            carmodel = new CarModelObject();
+            carmodel.Id = "2";
+            carmodel.Brand = "Fiat";
+            carmodel.Model = "Punto";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "fiat-punto.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "3";
+            carmodel.Brand = "Mercedes";
+            carmodel.Model = "Sprinter";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "mercedes-sprinter.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "4";
+            carmodel.Brand = "Renault";
+            carmodel.Model = "Clio";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "renault-clio.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "5";
+            carmodel.Brand = "Tesla";
+            carmodel.Model = "Model S";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "tesla-s.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "6";
+            carmodel.Brand = "Volvo";
+            carmodel.Model = "V90";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "volvo-v90.jpg";
+            carmodels.Add(carmodel);
+
+            ViewData["carmodels"] = carmodels;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Cars(IndexViewModel model)
+        {
+            List<CarModelObject> carmodels = new List<CarModelObject>();
+            CarModelObject carmodel = new CarModelObject();
+            carmodel.Id = "1";
+            carmodel.Brand = "Audi";
+            carmodel.Model = "A6";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "audi-a6.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "2";
+            carmodel.Brand = "Fiat";
+            carmodel.Model = "Punto";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "fiat-punto.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "3";
+            carmodel.Brand = "Mercedes";
+            carmodel.Model = "Sprinter";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "mercedes-sprinter.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "4";
+            carmodel.Brand = "Renault";
+            carmodel.Model = "Clio";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "renault-clio.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "5";
+            carmodel.Brand = "Tesla";
+            carmodel.Model = "Model S";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "tesla-s.jpg";
+            carmodels.Add(carmodel);
+
+            carmodel = new CarModelObject();
+            carmodel.Id = "6";
+            carmodel.Brand = "Volvo";
+            carmodel.Model = "V90";
+            carmodel.Transmission = "Manual";
+            carmodel.Segment = "A";
+            carmodel.Image = "volvo-v90.jpg";
+            carmodels.Add(carmodel);
+
+            ViewData["carmodels"] = carmodels;
+            HttpContext.Response.Redirect("/reserve/details");
+            return View("~/Views/Shared/_Redirect.cshtml");
         }
 
         // GET: /<controller>/

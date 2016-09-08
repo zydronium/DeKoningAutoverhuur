@@ -52,6 +52,13 @@ namespace DeKoningAutoverhuur.Web.WebApplication
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.CookieName = ".Session";
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
             services.AddMvc();
 
             // Add application services.
@@ -81,6 +88,8 @@ namespace DeKoningAutoverhuur.Web.WebApplication
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseIdentity();
 
