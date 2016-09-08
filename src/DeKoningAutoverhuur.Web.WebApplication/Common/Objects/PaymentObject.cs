@@ -7,7 +7,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Common.Objects
 {
     public class PaymentObject
     {
-        public string name;
-        public string identifier;
+        public string Name;
+        public string Identifier;
     }
 }

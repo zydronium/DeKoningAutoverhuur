@@ -183,17 +183,49 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         // GET: /<controller>/
         public IActionResult Payment()
         {
-            List<CarObject> cars = new List<CarObject>();
-            CarObject car = new CarObject();
-            car.LicensePlate = "12-34-AB";
-            car.Brand = "Mercedes";
-            car.Model = "A";
-            car.Transmission = "Manual";
-            car.Segment = "A";
-            cars.Add(car);
+            List<PaymentObject> payments = new List<PaymentObject>();
+            PaymentObject payment = new PaymentObject();
+            payment.Name = "Contant";
+            payment.Identifier = "contant";
+            payments.Add(payment);
 
-            ViewData["cars"] = cars;
+            payment = new PaymentObject();
+            payment.Name = "PayPal";
+            payment.Identifier = "paypal";
+            payments.Add(payment);
+
+            payment = new PaymentObject();
+            payment.Name = "Credit Card";
+            payment.Identifier = "creditcard";
+            payments.Add(payment);
+
+            ViewData["payments"] = payments;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Payment(PaymentViewModel model)
+        {
+            List<PaymentObject> payments = new List<PaymentObject>();
+            PaymentObject payment = new PaymentObject();
+            payment.Name = "Contant";
+            payment.Identifier = "contant";
+            payments.Add(payment);
+
+            payment = new PaymentObject();
+            payment.Name = "PayPal";
+            payment.Identifier = "paypal";
+            payments.Add(payment);
+
+            payment = new PaymentObject();
+            payment.Name = "Credit Card";
+            payment.Identifier = "creditcard";
+            payments.Add(payment);
+
+            ViewData["payments"] = payments;
+            HttpContext.Session.SetString("payment_provider", model.provider);
+            HttpContext.Response.Redirect("/reserve/payment");
+            return View("~/Views/Shared/_Redirect.cshtml");
         }
 
         // GET: /<controller>/
