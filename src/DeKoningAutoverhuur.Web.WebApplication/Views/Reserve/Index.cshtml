@@ -11,16 +11,6 @@
         <p style="color:Red;">@Html.Raw(ViewData["error"])</p>
     }
     <h4>Profiel gegevens</h4>
-    <div class="form-group">
-        <label><strong>Bedrijfsnaam</strong></label>
-        <input class="form-control" type="text" style="width: 462px;" id="form_companyname" name="companyname" value="@ViewData["companyname"]" /><br />
-        <small>Een bedrijfsnaam is optioneel.</small>
-        </div>
-        <div class="form-group">
-            <label><strong>BTW Number</strong></label>
-            <input class="form-control" type="text" style="width: 462px;" id="form_vat" name="vat" value="@ViewData["vat"]" /><br />
-            <small>Een BTW nummer is optioneel.</small>
-        </div>
         <div class="form-group">
             <label><strong>Voorletters</strong></label>
             <input class="form-control" type="text" style="width: 462px;" id="form_name_initials" name="name_initials" value="@ViewData["name_initials"]" />
@@ -38,11 +28,6 @@
             <input class="form-control" type="text" style="width: 462px;" id="form_name_lastname" name="name_lastname" required="required" value="@ViewData["name_lastname"]" />
         </div>
         <div class="form-group">
-            <label><strong>Geslacht*</strong></label>
-            <input type="radio" id="form_gender" name="gender" required="required" value="M" @if (!String.IsNullOrEmpty((string)ViewData["gender"]) && ViewData["gender"].ToString() == "M") { @Html.Raw("checked")   ; } /> Man
-            <input type="radio" id="form_gender" name="gender" required="required" value="F" @if (!String.IsNullOrEmpty((string)ViewData["gender"]) && ViewData["gender"].ToString() == "F") { @Html.Raw("checked")   ; } /> Vrouw
-        </div>
-        <div class="form-group">
             <label><strong>Telefoon*</strong></label>
             <input type="text" style="width: 40px;" id="form_phone_countrycode" name="phone_countrycode" required="required" value="@ViewData["phone_countrycode"]" />
             <input type="text" style="width: 40px;" id="form_phone_areacode" name="phone_areacode" required="required" value="@ViewData["phone_areacode"]" />
@@ -52,27 +37,6 @@
         <div class="form-group">
             <label><strong>E-Mail*</strong></label>
             <input class="form-control" type="text" style="width: 462px;" id="form_email" name="email" required="required" value="@ViewData["email"]" />
-        </div>
-        <h4>Adres gegevens</h4>
-        <div class="form-group">
-            <label><strong>Straat*</strong></label>
-            <input class="form-control" type="text" id="form_address_street" name="address_street" required="required" value="@ViewData["address_street"]" />
-        </div>
-        <div class="form-group">
-            <label><strong>Nummer* en toevoeging</strong></label>
-            <input type="text" style="width: 40px;" id="form_address_number" name="address_number" required="required" value="@ViewData["address_number"]" />
-            <input type="text" style="width: 40px;" id="form_address_suffix" name="address_suffix" value="@ViewData["address_suffix"]" /><br />
-            <small>De toevoeging is optioneel.</small>
-        </div>
-        <div class="form-group">
-            <label><strong>Postcode* en plaats*</strong></label>
-            <input type="text" style="width: 70px;" id="form_address_zipcode" name="address_zipcode" required="required" value="@ViewData["address_zipcode"]" />
-            <input type="text" style="width: 310px;" id="form_address_city" name="address_city" required="required" value="@ViewData["address_city"]" /><br />
-            <small>Voorbeeld: 1234 AB</small>
-        </div>
-        <div class="form-group">
-            <label><strong>Staat/provincie</strong></label>
-            <input class="form-control" type="text" style="width: 462px;" id="form_address_state" name="address_state" value="@ViewData["address_state"]" />
         </div>
         <div class="form-group">
             <label><strong>Land*</strong></label>
