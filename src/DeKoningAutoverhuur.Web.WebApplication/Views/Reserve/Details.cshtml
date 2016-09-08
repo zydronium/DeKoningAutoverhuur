@@ -1,0 +1,78 @@
+﻿@using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
+@{
+    var cars = (List<CarObject>)ViewData["cars"];
+    ViewData["Title"] = "Reserveren";
+}
+<h2>@ViewData["Title"].</h2>
+
+<form name="form" method="post" action="">
+    @if (ViewData["error"] != null)
+    {
+        <p style="color:Red;">@Html.Raw(ViewData["error"])</p>
+    }
+    <h4>Profiel gegevens</h4>
+        <div class="form-group">
+            <label><strong>Voorletters</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_name_initials" name="name_initials" value="@ViewData["name_initials"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Voornaam*</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_name_firstname" name="name_firstname" required="required" value="@ViewData["name_firstname"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Tussenvoegsel</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_name_prefix" name="name_prefix" value="@ViewData["name_prefix"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Achternaam*</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_name_lastname" name="name_lastname" required="required" value="@ViewData["name_lastname"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Telefoon*</strong></label>
+            <input type="text" style="width: 40px;" id="form_phone_countrycode" name="phone_countrycode" required="required" value="@ViewData["phone_countrycode"]" />
+            <input type="text" style="width: 40px;" id="form_phone_areacode" name="phone_areacode" required="required" value="@ViewData["phone_areacode"]" />
+            <input type="text" style="width: 228px;" id="form_phone_subscribernumber" name="phone_subscribernumber" required="required" value="@ViewData["phone_subscribernumber"]" /><br />
+            <small>Voorbeeld: +44 110 8747123 </small>
+        </div>
+        <div class="form-group">
+            <label><strong>E-Mail*</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_email" name="email" required="required" value="@ViewData["email"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Land*</strong></label>
+            <input class="form-control" type="text" style="width: 462px;" id="form_address_country" name="address_country" required="required" value="@ViewData["address_country"]" />
+        </div>
+        <h4>Verhuur periode</h4>
+        <div class="form-group">
+            <label><strong>Van</strong></label>
+            <input class="form-control" type="date" style="width: 462px;" id="form_fromdatetime" name="fromdatetime" required="required" value="@ViewData["fromdatetime"]" />
+        </div>
+        <div class="form-group">
+            <label><strong>Tot</strong></label>
+            <input class="form-control" type="date" style="width: 462px;" id="form_todatetime" name="todatetime" required="required" value="@ViewData["todatetime"]" />
+        </div>
+        <h4>Auto selectie</h4>
+        <div class="form-group">
+            <label>Selecteer een auto</label>
+
+            <select id="form_car" name="car">
+                @{
+                    string carField = String.IsNullOrEmpty((string)ViewData["car"]) ? "" : ViewData["car"].ToString();
+                    foreach (CarObject car in cars)
+                    {
+                        string value = car.Brand + " " + car.Model + " " + car.Transmission + "(" + car.Segment + ")";
+                        string selected = "";
+
+                        if (carField == car.LicensePlate)
+                        {
+                            selected = "selected";
+                        }
+                        @Html.Raw("<option value=\"" + car.LicensePlate + "\" " + selected + " > " + value + "</option>");
+                    }
+                }
+            </select>
+        </div>
+        <p>
+            <button type="submit" id="form_save" class="btn">Reserveren</button>
+        </p>
+</form>
