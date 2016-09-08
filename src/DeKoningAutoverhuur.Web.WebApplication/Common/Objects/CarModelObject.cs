@@ -13,6 +13,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Common.Objects
         public string Transmission;
         public string Segment;
         public double PricePerDay;
+        public string image;
         public DateTime Created;
         public DateTime Modified;
         public Boolean Deleted;
