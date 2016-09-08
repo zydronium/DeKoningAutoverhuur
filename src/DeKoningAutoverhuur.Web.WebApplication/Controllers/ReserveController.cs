@@ -74,7 +74,7 @@ car = " + model.car + @"";
                 client.Send(message);
                 client.Disconnect(true);
             }
-            return View();
+            return View("~/Views/Reserve/IndexSuccess.cshtml");
         }
 
     }
