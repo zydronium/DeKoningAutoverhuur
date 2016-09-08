@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
+using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveVielModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +16,17 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(ReserveViewModel model)
+        {
             var message = new MimeMessage();
 
             message.To.Add(new MailboxAddress("receptie", "receptie@koningverhuur.auto"));
-            
+
             message.From.Add(new MailboxAddress("Website", "noreply@koningverhuur.auto"));
             message.Subject = "Nieuwe reservering";
             message.Body = new TextPart("plain")
@@ -35,5 +43,6 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
             }
             return View();
         }
+
     }
 }
