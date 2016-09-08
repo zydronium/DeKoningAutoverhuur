@@ -44,6 +44,18 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
 
             ViewData["cars"] = cars;
 
+            string messageText = @"Er is een nieuwe reservering voor " + model.fromdatetime + @".
+Gegevens Klant
+Naam = " + model.name_firstname + @" " + model.name_prefix + @" " + model.name_lastname + @"
+Adres = " + model.address_street + @" " + model.address_number + @" " + model.address_suffix + @"
+postcode = " + model.address_zipcode + @"
+city = " + model.address_city + @"
+country = " + model.address_country + @"
+phone = " + model.phone_countrycode + @" " + model.phone_areacode + @" " + model.phone_subscribernumber + @"
+
+Gewenste Auto
+car = " + model.car + @"";
+
             var message = new MimeMessage();
 
             message.To.Add(new MailboxAddress("receptie", "receptie@koningverhuur.auto"));
@@ -52,7 +64,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
             message.Subject = "Nieuwe reservering";
             message.Body = new TextPart("plain")
             {
-                Text = "Er is een nieuwe reservering voor vandaag."
+                Text = messageText
             };
 
             using (var client = new SmtpClient())
