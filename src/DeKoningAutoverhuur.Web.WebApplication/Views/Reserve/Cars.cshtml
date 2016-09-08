@@ -1,4 +1,32 @@
 ﻿@{
+    var CarModels = (List<CarModel>)ViewData["carmodels"];
     ViewData["Title"] = "Reserveren - Auto kiezen";
 }
 <h2>@ViewData["Title"].</h2>
+<form name="form" method="post" action="">
+<div class="row">
+    @{
+        foreach (CarModel CarModel in CarModels)
+        {
+            @Html.Raw(@"
+            <div class=""col-md-3"">
+                <div class=""car-holder"">
+                    <div class=""car-image"" >
+                        <img src=""" + @""" class=""img-responsive"" />
+                    </div>
+                    <div class=""car-info"" >
+                        <p>
+                            " + CarModel.Brand + @" " + CarModel.Model + @"
+                        </p>
+                        <input type=""radio"" name=""carmodel"" value=""" + CarModel.Id + @"""/>
+                    </div>
+                </div>
+
+            </div>");
+        }
+    }
+
+
+</div>
+    <button type="submit" id="form_save" class="btn">Reserveren</button>
+</form>
