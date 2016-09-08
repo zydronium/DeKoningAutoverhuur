@@ -95,6 +95,8 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Cars(CarsViewModel model)
         {
+            var test = HttpContext;
+
             List<CarModelObject> carmodels = new List<CarModelObject>();
             CarModelObject carmodel = new CarModelObject();
             carmodel.Id = "1";

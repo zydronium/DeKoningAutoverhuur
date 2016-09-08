@@ -7,6 +7,6 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels
 {
     public class CarsViewModel
     {
-        public string carmodel;
+        public string carmodel { get; set; }
     }
 }
