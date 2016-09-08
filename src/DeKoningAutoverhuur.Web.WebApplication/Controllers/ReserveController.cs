@@ -17,7 +17,39 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List <CarObject> cars = new List<CarObject>();
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
+        }
+
+        // GET: /<controller>/
+        public IActionResult Cars()
+        {
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
+        }
+
+        // GET: /<controller>/
+        public IActionResult Details()
+        {
+            List<CarObject> cars = new List<CarObject>();
             CarObject car = new CarObject();
             car.LicensePlate = "12-34-AB";
             car.Brand = "Mercedes";
@@ -31,7 +63,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(ReserveViewModel model)
+        public async Task<IActionResult> Details(ReserveViewModel model)
         {
             List<CarObject> cars = new List<CarObject>();
             CarObject car = new CarObject();
@@ -75,6 +107,70 @@ car = " + model.car + @"";
                 client.Disconnect(true);
             }
             return View("~/Views/Reserve/IndexSuccess.cshtml");
+        }
+
+        // GET: /<controller>/
+        public IActionResult Payment()
+        {
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
+        }
+
+        // GET: /<controller>/
+        public IActionResult PayPal()
+        {
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
+        }
+
+        // GET: /<controller>/
+        public IActionResult CreditCard()
+        {
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
+        }
+
+        // GET: /<controller>/
+        public IActionResult Success()
+        {
+            List<CarObject> cars = new List<CarObject>();
+            CarObject car = new CarObject();
+            car.LicensePlate = "12-34-AB";
+            car.Brand = "Mercedes";
+            car.Model = "A";
+            car.Transmission = "Manual";
+            car.Segment = "A";
+            cars.Add(car);
+
+            ViewData["cars"] = cars;
+            return View();
         }
 
     }
