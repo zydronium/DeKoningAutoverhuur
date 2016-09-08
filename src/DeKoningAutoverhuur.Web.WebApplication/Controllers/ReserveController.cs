@@ -93,7 +93,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cars(IndexViewModel model)
+        public async Task<IActionResult> Cars(CarsViewModel model)
         {
             List<CarModelObject> carmodels = new List<CarModelObject>();
             CarModelObject carmodel = new CarModelObject();
@@ -151,6 +151,7 @@ namespace DeKoningAutoverhuur.Web.WebApplication.Controllers
             carmodels.Add(carmodel);
 
             ViewData["carmodels"] = carmodels;
+            HttpContext.Session.SetString("carmodel", model.carmodel);
             HttpContext.Response.Redirect("/reserve/details");
             return View("~/Views/Shared/_Redirect.cshtml");
         }
