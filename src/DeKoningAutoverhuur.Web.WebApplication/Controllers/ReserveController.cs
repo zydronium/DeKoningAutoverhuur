@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
-using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveVielModels;
+using DeKoningAutoverhuur.Web.WebApplication.Models.ReserveViewModels;
 using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
