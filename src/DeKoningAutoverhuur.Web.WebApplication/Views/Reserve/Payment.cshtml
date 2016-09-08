@@ -1,10 +1,16 @@
-﻿@{
+﻿@using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
+@{
+    var payments = (List<PaymentObject>)ViewData["payments"];
     ViewData["Title"] = "Reserveren - Betaling kiezen";
 }
 <h2>@ViewData["Title"].</h2>
 
 <form name="form" method="post">
-    <input type="radio" name="paymentmethod" value="paypal" checked/>
-    <input type="radio" name="paymentmethod" value="creditcard" />
+@{
+    foreach (PaymentObject payment in payments)
+    {
+        @Html.Raw(@"<input type=""radio"" name=""provider"" value=""" + payment.Identifier + @""" checked />");
+    }
+        }
     <input type="submit" value="betalen" />
 </form>
