@@ -1,24 +1,25 @@
-﻿@{
-    var CarModels = (List<CarModel>)ViewData["carmodels"];
+﻿@using DeKoningAutoverhuur.Web.WebApplication.Common.Objects;
+@{
+    var CarModelObjects = (List<CarModelObject>)ViewData["carmodels"];
     ViewData["Title"] = "Reserveren - Auto kiezen";
 }
 <h2>@ViewData["Title"].</h2>
 <form name="form" method="post" action="">
 <div class="row">
     @{
-        foreach (CarModel CarModel in CarModels)
+        foreach (CarModelObject CarModelObject in CarModelObjects)
         {
             @Html.Raw(@"
             <div class=""col-md-3"">
                 <div class=""car-holder"">
                     <div class=""car-image"" >
-                        <img src=""" + @""" class=""img-responsive"" />
+                        <img src=""/images/" + CarModelObject.Image +  @""" class=""img-responsive"" />
                     </div>
                     <div class=""car-info"" >
                         <p>
-                            " + CarModel.Brand + @" " + CarModel.Model + @"
+                            " + CarModelObject.Brand + @" " + CarModelObject.Model + @"
                         </p>
-                        <input type=""radio"" name=""carmodel"" value=""" + CarModel.Id + @"""/>
+                        <input type=""radio"" name=""carmodel"" value=""" + CarModelObject.Id + @"""/>
                     </div>
                 </div>
 

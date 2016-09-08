@@ -2,3 +2,9 @@
     ViewData["Title"] = "Reserveren - Betaling kiezen";
 }
 <h2>@ViewData["Title"].</h2>
+
+<form name="form" method="post">
+    <input type="radio" name="paymentmethod" value="paypal" checked/>
+    <input type="radio" name="paymentmethod" value="creditcard" />
+    <input type="submit" value="betalen" />
+</form>

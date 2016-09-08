@@ -5,7 +5,7 @@
 }
 <h2>@ViewData["Title"].</h2>
 
-<form name="form" method="post" action="">
+<form name="form" method="post">
     @if (ViewData["error"] != null)
     {
         <p style="color:Red;">@Html.Raw(ViewData["error"])</p>
