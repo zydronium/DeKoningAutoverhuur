@@ -4,6 +4,9 @@
 <h2>@ViewData["Title"].</h2>
 
 <h4>Verhuur periode</h4>
+<p>
+    Selecteer hier de datum waarop u wilt huren.
+</p>
 <form name="form" method="post" action="">
     <div class="form-group">
         <label><strong>Van</strong></label>
@@ -13,4 +16,7 @@
         <label><strong>Tot</strong></label>
         <input class="form-control" type="date" style="width: 462px;" id="form_todatetime" name="todatetime" required="required" value="@ViewData["todatetime"]" />
     </div>
+    <p>
+        <button type="submit" id="form_save" class="btn">Volgende stap</button>
+    </p>
 </form>
