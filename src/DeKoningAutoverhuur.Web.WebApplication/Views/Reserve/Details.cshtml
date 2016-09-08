@@ -42,28 +42,7 @@
             <label><strong>Land*</strong></label>
             <input class="form-control" type="text" style="width: 462px;" id="form_address_country" name="address_country" required="required" value="@ViewData["address_country"]" />
         </div>
-        <h4>Auto selectie</h4>
-        <div class="form-group">
-            <label>Selecteer een auto</label>
-
-            <select id="form_car" name="car">
-                @{
-                    string carField = String.IsNullOrEmpty((string)ViewData["car"]) ? "" : ViewData["car"].ToString();
-                    foreach (CarObject car in cars)
-                    {
-                        string value = car.Brand + " " + car.Model + " " + car.Transmission + "(" + car.Segment + ")";
-                        string selected = "";
-
-                        if (carField == car.LicensePlate)
-                        {
-                            selected = "selected";
-                        }
-                        @Html.Raw("<option value=\"" + car.LicensePlate + "\" " + selected + " > " + value + "</option>");
-                    }
-                }
-            </select>
-        </div>
         <p>
-            <button type="submit" id="form_save" class="btn">Reserveren</button>
+            <button type="submit" id="form_save" class="btn">Volgende stap</button>
         </p>
 </form>

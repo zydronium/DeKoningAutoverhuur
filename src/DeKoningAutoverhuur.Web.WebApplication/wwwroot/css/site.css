@@ -61,6 +61,10 @@ textarea {
     padding: 5px;
 }
 
+.car-image img{
+    height: 100px;
+}
+
 .car-info{
     padding: 5px;
 }
